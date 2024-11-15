@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Catamaran", sans-serif;
+  font-size: 16px;
+
+  /* Cores do produto */
+  --yellow: #b8952e;
+  --yellow-light: #dbc170;
+  --yellow-dark: #846f2e;
+
+  /* Cores base */
+  --gray-100: #f5f4f5;
+  --gray-200: #b2afb6;
+  --gray-300: #98959d;
+  --gray-400: #7a767f;
+  --gray-500: #3e3c41;
+  --gray-600: #2e2c30;
+  --gray-700: #232225;
+  --gray-800: #19181b;
+  --gray-900: #050505;
+
+}
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yellow);
+}
+
+body {
+  background-color: var(--gray-800);
+  color: var(--gray-100);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: calc(100vh - 1.5rem);
+  grid-template-areas: "form schedule";
+
+  padding: 0.75rem;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: var(--gray-600);
+  padding: 0.75rem 1.25rem;
+  border-bottom-right-radius: 0.75rem;
+
+  height: 3.5rem;
+  width: 8.7rem;
+}
+
+@media (max-width: 1100px) {
+  :root {
+    font-size: 14px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
