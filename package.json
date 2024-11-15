@@ -1,0 +1,21 @@
+{
+  "name": "Trimtimer",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "Web application for haircut schedules.",
+  "author": "Heloise Lui",
+  "license": "ISC",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack server",
+    "server": "json-server --watch server.json --port 3333"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-alpha.21"
+  },
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
