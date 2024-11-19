@@ -2,6 +2,7 @@ import { apiConfig } from "./api-config.js";
 
 export async function newSchedule({ id, name, when }) {
   try {
+    // Making the request to send scheduling data
     await fetch(`${apiConfig.baseURL}/schedules`, {
       method: 'POST',
       headers: {
@@ -9,7 +10,7 @@ export async function newSchedule({ id, name, when }) {
       },
       body: JSON.stringify({ id, name, when })
     })
-
+    // Showing a successful booking message
     alert("Your booking was successful!")
   } catch (error) {
     console.log(error)
