@@ -2,6 +2,8 @@ import dayjs from "dayjs"
 
 import { openingHours } from "../../utils/opening-hours"
 
+import { hoursClick } from "./hours-click"
+
 const hours = document.getElementById("hours")
 
 export function hoursLoad({ date }) {
@@ -9,9 +11,8 @@ export function hoursLoad({ date }) {
     // Recuperar somente o horario.
     const [scheduleHour] = hour.split(":")
 
-
     // Adding the gorario to the date and checking that it is in the past.
-    const isHourPast = dayjs(date).add(scheduleHour, "hour").isBefore(dayjs())
+    const isHourPast = dayjs(date).add(scheduleHour, "hour").isAfter(dayjs())
 
     return {
       hour,
@@ -39,6 +40,8 @@ export function hoursLoad({ date }) {
 
   })
 
+  // Adding a click event to the timetables.
+  hoursClick()
 }
 
 function hourHeaderAdd(title) {
