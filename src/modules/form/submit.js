@@ -1,4 +1,5 @@
 import dayjs from "dayjs"
+import { newSchedule } from "../../services/new-schedule.js"
 
 const form = document.querySelector("form")
 const clientName = document.getElementById("client")
@@ -11,7 +12,7 @@ const currentDateInput = dayjs(new Date()).format("YYYY-MM-DD")
 selectedDate.value = currentDateInput
 selectedDate.min = currentDateInput
 
-form.onsubmit = (event) => {
+form.onsubmit = async (event) => {
   // Preventing default page loading
   event.preventDefault()
 
@@ -40,8 +41,14 @@ form.onsubmit = (event) => {
     // Creating an identifier
     const id = new Date().getTime()
 
+    await newSchedule({
+      id,
+      name,
+      when,
+    })
+
   } catch (error) {
     alert("Oops..! Someting went wrong. It was not possible to book your appointment. Please try again later.")
-
+    console.log(error)
   }
 }
