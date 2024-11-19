@@ -7,6 +7,9 @@ import { hoursClick } from "./hours-click"
 const hours = document.getElementById("hours")
 
 export function hoursLoad({ date }) {
+  // Cleaning the timetable
+  hours.innerHTML = ""
+
   const opening = openingHours.map((hour) => {
     // Recuperar somente o horario.
     const [scheduleHour] = hour.split(":")

@@ -1,6 +1,7 @@
 import dayjs from "dayjs"
 
 const form = document.querySelector("form")
+const clientName = document.getElementById("client")
 const selectedDate = document.getElementById("date")
 
 // Current date to better format the input
@@ -13,4 +14,34 @@ selectedDate.min = currentDateInput
 form.onsubmit = (event) => {
   // Preventing default page loading
   event.preventDefault()
+
+  try {
+    // Retrieving the client's name
+    const name = clientName.value.trim()
+
+    if (!name) {
+      return alert("Please enter the client's name!")
+    }
+
+    // Recover the selected time
+    const hourSelected = document.querySelector('.hour-selected')
+
+    if (!hourSelected) {
+      return alert("Please inform the time!")
+    }
+
+    // Retrieving only the time
+    const [hour] = hourSelected.innerText.split(":")
+    console.log(hour)
+
+    // Inserting the time in the date
+    const when = dayjs(selectedDate.value).add(hour, "hour")
+
+    // Creating an identifier
+    const id = new Date().getTime()
+
+  } catch (error) {
+    alert("Oops..! Someting went wrong. It was not possible to book your appointment. Please try again later.")
+
+  }
 }
