@@ -1,14 +1,17 @@
 import dayjs from "dayjs"
 
-import { openingHours } from "../../utils/opening-hours"
+import { openingHours } from "../../utils/opening-hours.js"
 
-import { hoursClick } from "./hours-click"
+import { hoursClick } from "./hours-click.js"
 
 const hours = document.getElementById("hours")
 
-export function hoursLoad({ date }) {
+export function hoursLoad({ date, dailySchedules }) {
   // Cleaning the timetable
   hours.innerHTML = ""
+
+  const unavailableHours = dailySchedules.map((schedule) => dayjs(schedule.when).format("HH:mm")
+  )
 
   const opening = openingHours.map((hour) => {
     // Recuperar somente o horario.
@@ -20,7 +23,6 @@ export function hoursLoad({ date }) {
     return {
       hour,
       available: isHourPast,
-
     }
   })
 

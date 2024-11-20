@@ -25,7 +25,7 @@ form.onsubmit = async (event) => {
     }
 
     // Recover the selected time
-    const hourSelected = document.querySelector('.hour-selected')
+    const hourSelected = document.querySelector(".hour-selected")
 
     if (!hourSelected) {
       return alert("Please inform the time!")
@@ -33,7 +33,6 @@ form.onsubmit = async (event) => {
 
     // Retrieving only the time
     const [hour] = hourSelected.innerText.split(":")
-    console.log(hour)
 
     // Inserting the time in the date
     const when = dayjs(selectedDate.value).add(hour, "hour")
