@@ -10,19 +10,25 @@ export function hoursLoad({ date, dailySchedules }) {
   // Cleaning the timetable
   hours.innerHTML = ""
 
+
+  // Get a list of all unavailable timeslots
   const unavailableHours = dailySchedules.map((schedule) => dayjs(schedule.when).format("HH:mm")
   )
+
+  console.log(unavailableHours)
 
   const opening = openingHours.map((hour) => {
     // Recuperar somente o horario.
     const [scheduleHour] = hour.split(":")
 
     // Adding the gorario to the date and checking that it is in the past.
-    const isHourPast = dayjs(date).add(scheduleHour, "hour").isAfter(dayjs())
+    const isHourPast = dayjs(date).add(scheduleHour, "hour").isBefore(dayjs())
+
+    const available = !unavailableHours.includes(hour) && !isHourPast
 
     return {
       hour,
-      available: isHourPast,
+      available
     }
   })
 
