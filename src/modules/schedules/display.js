@@ -46,7 +46,7 @@ export function scheduleDisplay({ dailySchedules }) {
       }
     })
   } catch (error) {
-    console.log(error)
     alert("The bookings couldn't be displayed!")
+    console.log(error)
   }
 }

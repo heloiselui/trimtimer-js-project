@@ -2,8 +2,8 @@ import dayjs from "dayjs"
 import { newSchedule } from "../../services/new-schedule.js"
 
 const form = document.querySelector("form")
-const clientName = document.getElementById("client")
 const selectedDate = document.getElementById("date")
+const clientName = document.getElementById("client")
 
 // Current date to better format the input
 const currentDateInput = dayjs(new Date()).format("YYYY-MM-DD")

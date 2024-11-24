@@ -1,7 +1,6 @@
 import dayjs from "dayjs"
 
 import { openingHours } from "../../utils/opening-hours.js"
-
 import { hoursClick } from "./hours-click.js"
 
 const hours = document.getElementById("hours")
@@ -12,13 +11,10 @@ export function hoursLoad({ date, dailySchedules }) {
 
 
   // Get a list of all unavailable timeslots
-  const unavailableHours = dailySchedules.map((schedule) => dayjs(schedule.when).format("HH:mm")
-  )
-
-  console.log(unavailableHours)
+  const unavailableHours = dailySchedules.map((schedule) => dayjs(schedule.when).format("HH:mm"))
 
   const opening = openingHours.map((hour) => {
-    // Recuperar somente o horario.
+    // Only retrieve the time
     const [scheduleHour] = hour.split(":")
 
     // Adding the gorario to the date and checking that it is in the past.
